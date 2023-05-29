@@ -12,7 +12,7 @@
 
 - Methods used :
 
-  - Uses ***LOOPS*** to guess the first rational eigen values within the range (-100 to +100).
+  - Uses ***LOOPS*** to guess the first rational eigen value within the range (-100 to +100).
   - Then ***converts the cubic polynomial into a quadratic polynomial*** by using ***SYNTHETIC DIVISION***.
-  - Then finds the roots for the new found quadratic polynomial.
+  - Then finds the roots for the newly formed quadratic polynomial.
   - Prints the eigen values as well as cross checks with trace and determinant.

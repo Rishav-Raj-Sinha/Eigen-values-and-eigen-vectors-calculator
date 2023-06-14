@@ -4,57 +4,59 @@ using namespace std;
 
 int main() {
 	/*declaring variables*/
-	double a11,a12,a13,a21,a22,a23,a31,a32,a33;
+	double A[3][3];
 	double sd;
 	double sdm;
 	double det;
 
-    cout<<"a11"<<endl;
-    cin>>a11;
-    cout<<"a12"<<endl;
-    cin>>a12;
-    cout<<"a13"<<endl;
-    cin>>a13;
-    cout<<"a21"<<endl;
-    cin>>a21;
-    cout<<"a22"<<endl;
-    cin>>a22;
-    cout<<"a23"<<endl;
-    cin>>a23;
-    cout<<"a31"<<endl;
-    cin>>a31;
-    cout<<"a32"<<endl;
-    cin>>a32;
-    cout<<"a33"<<endl;
-    cin>>a33;
+	cout<<"enter elements of your matrix :"<<endl;
+	for(int i=1;i<=3;i++)
+	{
+	 for(int j=1;j<=3;j++)
+		{
+		cout<<"enter element "<<i<<j<<":";
+		cin>>A[i][j];
+		cout<<endl;
+	    }
+	}
+	
+	cout<<"your matrix :"<<endl;
+	
+	for(int i=1;i<=3;i++)
+   	{
+     	for(int j=1;j<=3;j++)
+     	{
+		 cout<<A[i][j];
+	 	}
+     cout<<endl;
+}
     
     /*calculating sum of diagonal elements(sd) , sum of diagonal minors(sdm) , determinant(det) */ 
-	sd=a11+a22+a33;
-	sdm=(a22*a33-a23*a32)+(a11*a33-a13*a31)+(a11*a22-a12*a21);
-	det=(a11*(a22*a33-a23*a32))-(a12*(a21*a33-a23*a31))+(a13*(a21*a32-a22*a31));
+	sd=A[1][1]+A[2][2]+A[3][3];
+	sdm=(A[2][2]*A[3][3]-A[2][3]*A[3][2])+(A[1][1]*A[3][3]-A[1][3]*A[3][1])+(A[1][1]*A[2][2]-A[1][2]*A[2][1]);
+	det=(A[1][1]*(A[2][2]*A[3][3]-A[2][3]*A[3][2]))-(A[1][2]*(A[2][1]*A[3][3]-A[2][3]*A[3][1]))+(A[1][3]*(A[2][1]*A[3][2]-A[2][2]*A[3][1]));
 	
 	/* printing characteristic equation */
 	cout<<"Characteristic equation :"<<endl<<"X^3-("<<sd<<")X^2+("<<sdm<<")X-("<<det<<")=0"<<endl;
 	cout<<"Eigen values are :"<<endl;
 	
 	/*finding the first eigen value by using hit and trial method i.e. substituting all values from -100 to 100 in the cubic equation and equating to 0 */
-	
-		double i;
-	for(i=-100;i>=-100&&i<=100;i++)
+	double q;
+	for(q=-100;q>=-100&&q<=100;q++)
 	{
-		double cal=(i*i*i)-(i*i*sd)+(i*sdm)-det;
+		double cal=(q*q*q)-(q*q*sd)+(q*sdm)-det;
 		if(cal==0)
 		{
-		cout<<"="<<i<<endl;
+		cout<<"="<<q<<endl;
 		break;
 	    }
 
 	}
 	
-	/*dividing the cubic polnomial by (x-i) to get a quadratic polynomial*/
+	/*dividing the cubic polnomial by (x-q) to get a quadratic polynomial NOTE:"q* is the first root/
 	double b,c;
-	b=-sd+i;
-	c=b*i+sdm;
+	b=-sd+q;
+	c=b*q+sdm;
 	
 	/*finding roots of the quadratic equation*/
 	double d,r1,r2,real,img;
@@ -79,13 +81,13 @@ int main() {
 	{
 		real=-b/2;
 		img=sqrt(d)/2;
-		cout<<"="<<real<<"+"<<img<<"i"<<endl;
-		cout<<"="<<real<<"-"<<img<<"i"<<endl;
+		cout<<"="<<real<<"+"<<img<<"q"<<endl;
+		cout<<"="<<real<<"-"<<img<<"q"<<endl;
 	}
 	
 		/* verification */
-	double sume=i+r1+r2;
-	double prod=i*r1*r2;
+	double sume=q+r1+r2;
+	double prod=q*r1*r2;
 	if(sd==sume)
 	{
 	cout<<"Trace of the matrix ("<<sd<<")";

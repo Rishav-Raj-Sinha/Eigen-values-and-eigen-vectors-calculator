@@ -53,7 +53,7 @@ int main() {
 
 	}
 	
-	/*dividing the cubic polnomial by (x-q) to get a quadratic polynomial NOTE:"q* is the first root/
+	/*dividing the cubic polnomial by (x-q) to get a quadratic polynomial NOTE:"q* is the first root*/
 	double b,c;
 	b=-sd+q;
 	c=b*q+sdm;
